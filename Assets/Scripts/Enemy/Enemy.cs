@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health;
 
-    [SerializeField] private int _currentHealth;
+    private int _currentHealth;
 
     private void Awake()
     {
@@ -14,10 +14,14 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void Init(Vector3 position)
+    public void Init(Vector3 position, Vector3 rotation)
     {
-        gameObject.SetActive(true);
+        _currentHealth = _health;
+
         transform.position = position;
+        transform.eulerAngles = rotation;
+
+        gameObject.SetActive(true);
     }
 
     public void TakeDamage(int damage)

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 7
-  _template: {fileID: 7443416634235817104, guid: 80df6a205ec8c764d86670646f5e3cc1, type: 3}
+  _template: {fileID: 7443416634235817104, guid: caf7e3b1dc2d925448ebd72b5b9e1f2f, type: 3}
   _delay: 10
 --- !u!1 &282851097
 GameObject:
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 7
-  _template: {fileID: 7443416634235817104, guid: 80df6a205ec8c764d86670646f5e3cc1, type: 3}
+  _template: {fileID: 7443416634235817104, guid: caf7e3b1dc2d925448ebd72b5b9e1f2f, type: 3}
   _delay: 10
 --- !u!1001 &538962363
 PrefabInstance:
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 7
-  _template: {fileID: 7443416634235817104, guid: 80df6a205ec8c764d86670646f5e3cc1, type: 3}
+  _template: {fileID: 7443416634235817104, guid: caf7e3b1dc2d925448ebd72b5b9e1f2f, type: 3}
   _delay: 10
 --- !u!1 &963194225
 GameObject:
@@ -901,5 +901,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 7
-  _template: {fileID: 7443416634235817104, guid: 80df6a205ec8c764d86670646f5e3cc1, type: 3}
+  _template: {fileID: 7443416634235817104, guid: caf7e3b1dc2d925448ebd72b5b9e1f2f, type: 3}
   _delay: 10

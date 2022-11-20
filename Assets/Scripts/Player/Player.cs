@@ -20,7 +20,6 @@ namespace Player
             if (movement != 0)
             {
                 Vector3 target = transform.position + transform.forward * movement;
-                
                 transform.position = Vector3.MoveTowards(transform.position, target, _movementSpeed * Time.deltaTime);
             }
         }
