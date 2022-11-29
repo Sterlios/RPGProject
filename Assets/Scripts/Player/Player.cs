@@ -1,37 +1,34 @@
 ﻿using UnityEngine;
 
-namespace Player
+public class Player : MonoBehaviour
 {
-    class Player : MonoBehaviour
+    [SerializeField] private float _movementSpeed;
+    [SerializeField] private float _rotationAngle;
+
+    private void Update()
     {
-        [SerializeField] private float _movementSpeed;
-        [SerializeField] private float _rotationAngle;
+        Rotate();
+        Move();
+    }
 
-        private void Update()
+    private void Move()
+    {
+        float movement = Input.GetAxis("Vertical");
+
+        if (movement != 0)
         {
-            Rotate();
-            Move();
+            Vector3 target = transform.position + transform.forward * movement;
+            transform.position = Vector3.MoveTowards(transform.position, target, _movementSpeed * Time.deltaTime);
         }
+    }
 
-        private void Move()
+    private void Rotate()
+    {
+        float rotationSpeed = Input.GetAxis("Horizontal");
+
+        if (rotationSpeed != 0)
         {
-            float movement = Input.GetAxis("Vertical");
-            
-            if (movement != 0)
-            {
-                Vector3 target = transform.position + transform.forward * movement;
-                transform.position = Vector3.MoveTowards(transform.position, target, _movementSpeed * Time.deltaTime);
-            }
-        }
-
-        private void Rotate()
-        {
-            float rotationSpeed = Input.GetAxis("Horizontal");
-
-            if (rotationSpeed != 0)
-            {
-                transform.Rotate(Vector3.up, _rotationAngle * rotationSpeed);
-            }
+            transform.Rotate(Vector3.up, _rotationAngle * rotationSpeed);
         }
     }
 }

@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStateMachine : MonoBehaviour
 {
     [SerializeField] private State _firstState;
 
-    private State _currentState;
+    [SerializeField] private State _currentState;
 
     private void Start()
     {
         _currentState = _firstState;
-
+        Restart();
     }
 
     private void Update()
@@ -23,6 +21,12 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (nextState != null)
             Transit(nextState);
+    }
+
+    private void Restart()
+    {
+        if (_currentState != null)
+            _currentState.Enter();
     }
 
     private void Transit(State nextState)

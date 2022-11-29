@@ -27,17 +27,25 @@ public class Spawn : MonoBehaviour
 
         if (_afterDyingTime >= _delay)
         {
-            float distance = Random.Range(0, _radius);
-            float angle = Random.Range(0, MaxAngle);
-
             Vector3 rotation = new Vector3(0, Random.Range(0, MaxAngle), 0);
-            Vector3 position = new Vector3(CalculatePositionX(distance, angle), transform.position.y, CalculatePositionZ(distance, angle));
+            Vector3 position = GetPosition();
 
             _enemy.Init(position, rotation);
 
             _afterDyingTime = 0;
         }
     }
+
+    public Vector3 GetPosition()
+    {
+        float distance = Random.Range(0, _radius);
+        float angle = Random.Range(0, MaxAngle);
+
+        Vector3 position = new Vector3(CalculatePositionX(distance, angle), transform.position.y, CalculatePositionZ(distance, angle));
+
+        return position;
+    }
+        
 
     private float CalculatePositionX(float distance, float angle) 
         => Mathf.Cos(angle) * distance + transform.position.x;
