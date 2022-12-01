@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class WalkState : State
 {
-    [SerializeField] private float _speed;
+    [SerializeField] private float _walkSpeed;
+    [SerializeField] private float _rotateSpeed;
 
-    [SerializeField] private Vector3 _targetPoint;
-    [SerializeField] private Spawn _spawn;
+    private int _animationHash;
+    private Vector3 _targetPoint;
+    private Spawn _spawn;
+    private Vector3 _direction;
+    private Quaternion _rotation;
 
     public bool IsWalk { get; private set; }
 
     private void Awake()
     {
         _targetPoint = Vector3.zero;
+        _animationHash = Animator.StringToHash("IsWalk");
     }
 
     private void Start()
@@ -26,18 +31,35 @@ public class WalkState : State
         if (Target == null)
         {
             if (_targetPoint == Vector3.zero)
-            {
-                _targetPoint = _spawn.GetPosition();
-                IsWalk = true;
-            }
+                StartWalk();
 
-            transform.position = Vector3.MoveTowards(transform.position, _targetPoint, _speed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, _rotation, _rotateSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _targetPoint, _walkSpeed * Time.deltaTime);
 
             if (transform.position == _targetPoint)
-            {
-                _targetPoint = Vector3.zero;
-                IsWalk = false;
-            }
+                StopWalk();
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.TryGetComponent<Ground>(out Ground _))
+            StopWalk();
+    }
+
+    private void StartWalk()
+    {
+        _targetPoint = _spawn.GetPosition();
+        IsWalk = true;
+        StartAnimation(_animationHash);
+        _direction = _targetPoint - transform.position;
+        _rotation = Quaternion.LookRotation(_direction);
+    }
+
+    private void StopWalk()
+    {
+        _targetPoint = Vector3.zero;
+        IsWalk = false;
+        StopAnimation(_animationHash);
     }
 }

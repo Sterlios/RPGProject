@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3522610486004307133}
   - component: {fileID: 831091767470558526}
   - component: {fileID: 7649971129000798581}
+  - component: {fileID: 3392636818776379630}
   m_Layer: 0
   m_Name: Enemy level 1
   m_TagString: Untagged
@@ -217,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firstState: {fileID: 3768220837096252053}
+  _currentState: {fileID: 0}
 --- !u!54 &4258849985298236023
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -229,7 +231,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -249,8 +251,6 @@ MonoBehaviour:
   - {fileID: 7649971129000798581}
   _minDuration: 1
   _maxDuration: 3
-  _duration: 0
-  _time: 0
 --- !u!114 &3522610486004307133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 831091767470558526}
-  _speed: 1
+  _walkSpeed: 1
+  _rotateSpeed: 3
 --- !u!114 &831091767470558526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +293,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 3522610486004307133}
+--- !u!65 &3392636818776379630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934938286217129674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3596215, y: 2.219824, z: 0.46284392}
+  m_Center: {x: 0.002276063, y: 1.1243073, z: 0.063730404}
 --- !u!1 &3869650775829276341
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5602829906486796792}
-  - component: {fileID: 4333958721684988920}
+  - component: {fileID: 1766467058873093511}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -425,8 +439,8 @@ Transform:
   m_Father: {fileID: 4290869599689990956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &4333958721684988920
-CapsuleCollider:
+--- !u!65 &1766467058873093511
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -435,9 +449,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4266074573790564939
 GameObject:

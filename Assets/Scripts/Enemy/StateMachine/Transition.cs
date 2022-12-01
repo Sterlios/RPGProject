@@ -6,7 +6,7 @@ public abstract class Transition : MonoBehaviour
 
     public State TargetState => _targetState;
     public bool NeedTransit { get; private set; }
-    [SerializeField] protected Player Target { get; private set; } = null;
+    protected Player Target { get; private set; }
 
     public void Activate()
     {

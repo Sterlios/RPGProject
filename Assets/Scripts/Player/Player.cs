@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         if (movement != 0)
         {
             Vector3 target = transform.position + transform.forward * movement;
+
             transform.position = Vector3.MoveTowards(transform.position, target, _movementSpeed * Time.deltaTime);
         }
     }
@@ -27,8 +28,6 @@ public class Player : MonoBehaviour
         float rotationSpeed = Input.GetAxis("Horizontal");
 
         if (rotationSpeed != 0)
-        {
             transform.Rotate(Vector3.up, _rotationAngle * rotationSpeed);
-        }
     }
 }

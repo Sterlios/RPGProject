@@ -2,11 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Animator))]
 public abstract class State : MonoBehaviour
 {
     [SerializeField] private List<Transition> _transitions;
+    
+    private Animator _animator;
 
-    [SerializeField] protected Player Target { get; private set; } = null;
+    protected Player Target { get; private set; }
 
     public virtual void Enter()
     {
@@ -37,5 +40,22 @@ public abstract class State : MonoBehaviour
                 return transition.TargetState;
 
         return null;
+    }
+
+    protected void StartAnimation(int hash)
+    {
+        InitAnimator();
+        _animator.SetBool(hash, true);
+    }
+
+    protected void StopAnimation(int hash)
+    {
+        _animator.SetBool(hash, false);
+    }
+
+    private void InitAnimator()
+    {
+        if(_animator == null)
+            _animator = GetComponent<Animator>();
     }
 }

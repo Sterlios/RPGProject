@@ -7,8 +7,8 @@ public class IdleState : State
     [SerializeField] private float _minDuration;
     [SerializeField] private float _maxDuration;
 
-    [SerializeField] private float _duration;
-    [SerializeField] private float _time;
+    private float _duration;
+    private float _time;
 
     public bool IsStay { get; private set; }
 
